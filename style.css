@@ -93,3 +93,7 @@ body {
 	background: gold;
 	cursor: pointer;
 }
+
+.gridElem {
+	user-select: none;
+}

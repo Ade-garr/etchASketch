@@ -1,8 +1,7 @@
 function changeColor(e) {
-	// if (e.type === "mousedown")
-	// 	mousedown = 1;
-	if (mousedown === 1)
-		e.target.style.backgroundColor = `${colorValue}`;
+	if (e.type === "mouseover" && !mousedown)
+		return ;
+	e.target.style.backgroundColor = colorValue;
 }
 
 function clearGrid() {
@@ -45,12 +44,12 @@ const slider = document.querySelector('#slider');
 clear.addEventListener('click', clearGrid);
 color.addEventListener('input', setColorValue);
 slider.addEventListener('input', setGridValue);
-document.addEventListener('mouseup', () => {mousedown = 0;});
-document.addEventListener('mousedown', () => {mousedown = 1;});
+document.onmousedown = () => (mousedown = true)
+document.onmouseup = () => (mousedown = false)
 
 // variables initialization
 let gridValue = 16; // make a 16x16 grid at the beginning
 let colorValue = "black";
-let mousedown = 0;
+let mousedown = false;
 
 setGrid();
